@@ -1,0 +1,62 @@
+<!-- Copyright (c) 2019-2020 十三 all rights reserved. -->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<aside th:fragment="sidebar-fragment(path)" class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a th:href="@{/admin/index}" class="brand-link">
+<!--        <img th:src="@{/admin/dist/img/new-bee-logo-1.png}" alt="ssm-cluster Logo"-->
+<!--             class="brand-image img-circle elevation-3"-->
+<!--             style="opacity: .8">-->
+        <span class="brand-text font-weight-light">后台维护</span>
+    </a>
+    <!-- Sidebar -->
+    <div class="sidebar" style="background-color: #f2f2f2;">
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                data-accordion="false">
+                <!-- Add icons to the links using the .nav-icon class
+                     with font-awesome or any other icon font library -->
+                <li class="nav-header">Dashboard</li>
+
+                <li class="nav-item">
+                    <a th:href="@{/admin/goods/edit}" th:class="${path}=='goods-edit'?'nav-link active':'nav-link'">
+                        <i class="nav-icon fa fa-plus"></i>
+                        <p>
+                            添加商品
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a th:href="@{/admin/indexConfigs?configType=4}"
+                       th:class="${path}=='INDEX_GOODS_NEW'?'nav-link active':'nav-link'">
+                        <i class="nav-icon fa fa-hand-o-up"></i>
+                        <p>
+                            热销新品管理
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a th:href="@{/admin/categories?parentId=0&categoryLevel=1&backParentId=0}"
+                       th:class="${path}=='shoping_mall_category'?'nav-link active':'nav-link'">
+                        <i class="fa fa-list-alt nav-icon" aria-hidden="true"></i>
+                        <p>
+                            分类管理
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a th:href="@{/admin/goods}" th:class="${path}=='shoping_mall_goods'?'nav-link active':'nav-link'">
+                        <i class="fa fa-archive nav-icon" aria-hidden="true"></i>
+                        <p>
+                            商品管理
+                        </p>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+</aside>
+</html>

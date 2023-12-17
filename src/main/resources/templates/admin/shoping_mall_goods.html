@@ -1,0 +1,172 @@
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<header th:replace="admin/header::header-fragment">-->
+<!--</header>-->
+<!--<style>-->
+<!--    .ui-jqgrid tr.jqgrow td {-->
+<!--        white-space: normal !important;-->
+<!--        height: auto;-->
+<!--        vertical-align: text-top;-->
+<!--        padding-top: 2px;-->
+<!--    }-->
+
+<!--    a {-->
+<!--        color: #1baeae;-->
+<!--        text-decoration: none;-->
+<!--        background-color: transparent;-->
+<!--        -webkit-text-decoration-skip: objects;-->
+<!--    }-->
+
+<!--    a:hover {-->
+<!--        color: white;-->
+<!--        background-color: #1baeae;-->
+<!--    }-->
+<!--</style>-->
+<!--<body class="hold-transition sidebar-mini">-->
+<!--<div class="wrapper">-->
+<!--    &lt;!&ndash; 引入页面头header-fragment &ndash;&gt;-->
+<!--    <div th:replace="admin/header::header-nav"></div>-->
+<!--    &lt;!&ndash; 引入工具栏sidebar-fragment &ndash;&gt;-->
+<!--    <div th:replace="admin/sidebar::sidebar-fragment(${path})"></div>-->
+<!--    &lt;!&ndash; Content Wrapper. Contains 图标content &ndash;&gt;-->
+<!--    <div class="content-wrapper">-->
+<!--        &lt;!&ndash; Content Header (图标header) &ndash;&gt;-->
+<!--        <div class="content-header">-->
+<!--            <div class="container-fluid">-->
+<!--            </div>&lt;!&ndash; /.container-fluid &ndash;&gt;-->
+<!--        </div>-->
+<!--        &lt;!&ndash; Main content &ndash;&gt;-->
+<!--        <div >-->
+<!--            <div >-->
+<!--                <div >-->
+<!--                    <div class="card-header">-->
+<!--                        <h3 class="card-title">商品管理</h3>-->
+<!--                    </div> &lt;!&ndash; /.card-body &ndash;&gt;-->
+<!--                    <div class="card-body">-->
+<!--                        <div class="grid-btn">-->
+<!--                            <button onclick="addGoods()"><i-->
+<!--                                    ></i>&nbsp;添加商品-->
+<!--                            </button>-->
+<!--                            <button onclick="editGoods()"><i-->
+<!--                                    ></i>&nbsp;修改商品-->
+<!--                            </button>-->
+<!--                            <button onclick="putUpGoods()"><i-->
+<!--                                    ></i>&nbsp;上架商品-->
+<!--                            </button>-->
+<!--                            <button onclick="putDownGoods()"><i-->
+<!--                                    ></i>&nbsp;下架商品-->
+<!--                            </button>-->
+<!--                        </div>-->
+<!--                        <table id="jqGrid" class="table table-bordered">-->
+<!--                        </table>-->
+<!--                        <div id="jqGridPager"></div>-->
+<!--                    </div>&lt;!&ndash; /.card-body &ndash;&gt;-->
+<!--                </div>-->
+<!--            </div>&lt;!&ndash; /.container-fluid &ndash;&gt;-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    &lt;!&ndash; /.content-wrapper &ndash;&gt;-->
+<!--    &lt;!&ndash; 引入页脚footer-fragment &ndash;&gt;-->
+<!--    <div th:replace="admin/footer::footer-fragment"></div>-->
+<!--</div>-->
+<!--&lt;!&ndash; jQuery &ndash;&gt;-->
+<!--<script th:src="@{/admin/plugins/jquery/jquery.min.js}"></script>-->
+<!--&lt;!&ndash; Bootstrap 4 &ndash;&gt;-->
+<!--<script th:src="@{/admin/plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>-->
+<!--&lt;!&ndash; AdminLTE App &ndash;&gt;-->
+<!--<script th:src="@{/admin/dist/js/adminlte.min.js}"></script>-->
+<!--&lt;!&ndash; jqgrid &ndash;&gt;-->
+<!--<script th:src="@{/admin/plugins/jqgrid-5.7.0/jquery.jqGrid.min.js}"></script>-->
+<!--<script th:src="@{/admin/plugins/jqgrid-5.7.0/grid.locale-cn.js}"></script>-->
+<!--&lt;!&ndash; sweetalert &ndash;&gt;-->
+<!--<script th:src="@{/admin/plugins/sweetalert2/sweetalert2.all.min.js}"></script>-->
+<!--<script th:src="@{/admin/dist/js/public.js}"></script>-->
+<!--<script th:src="@{/admin/dist/js/shoping_mall_goods.js}"></script>-->
+<!--</body>-->
+<!--</html>-->
+
+<!-- Copyright (c) 2019-2020 十三 all rights reserved. -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<header th:replace="admin/header::header-fragment">
+</header>
+<style>
+    .ui-jqgrid tr.jqgrow td {
+        white-space: normal !important;
+        height: auto;
+        vertical-align: text-top;
+        padding-top: 2px;
+    }
+
+    a {
+        color: #1baeae;
+        text-decoration: none;
+        background-color: transparent;
+        -webkit-text-decoration-skip: objects;
+    }
+
+    a:hover {
+        color: white;
+        background-color: #1baeae;
+    }
+</style>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+    <!-- 引入页面头header-fragment -->
+    <div th:replace="admin/header::header-nav"></div>
+    <!-- 引入工具栏sidebar-fragment -->
+    <div th:replace="admin/sidebar::sidebar-fragment(${path})"></div>
+    <!-- Content Wrapper. Contains 图标content -->
+    <div class="content-wrapper">
+        <!-- Content Header (图标header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- Main content -->
+        <div class="content">
+            <div class="container-fluid">
+                <div class="card card-primary card-outline">
+                    <div class="card-header">
+                        <h3 class="card-title">商品管理</h3>
+                    </div> <!-- /.card-body -->
+                    <div class="card-body">
+                        <div class="grid-btn">
+                            <button class="btn" onclick="addGoods()"><i
+                                    class="fa"></i>&nbsp;添加商品
+                            </button>
+                            <button class="btn" onclick="editGoods()"><i
+                                    class="fa"></i>&nbsp;修改商品
+                            </button>
+                            <button class="btn" onclick="putUpGoods()"><i
+                                    class="fa"></i>&nbsp;上架商品
+                            </button>
+                            <button class="btn" onclick="putDownGoods()"><i
+                                    class="fa"></i>&nbsp;下架商品
+                            </button>
+                        </div>
+                        <table id="jqGrid" class="table table-bordered">
+                        </table>
+                        <div id="jqGridPager"></div>
+                    </div><!-- /.card-body -->
+                </div>
+            </div><!-- /.container-fluid -->
+        </div>
+    </div>
+    </div>
+<!-- jQuery -->
+<script th:src="@{/admin/plugins/jquery/jquery.min.js}"></script>
+<!-- Bootstrap 4 -->
+<script th:src="@{/admin/plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<!-- AdminLTE App -->
+<script th:src="@{/admin/dist/js/adminlte.min.js}"></script>
+<!-- jqgrid -->
+<script th:src="@{/admin/plugins/jqgrid-5.7.0/jquery.jqGrid.min.js}"></script>
+<script th:src="@{/admin/plugins/jqgrid-5.7.0/grid.locale-cn.js}"></script>
+<!-- sweetalert -->
+<script th:src="@{/admin/plugins/sweetalert2/sweetalert2.all.min.js}"></script>
+<script th:src="@{/admin/dist/js/public.js}"></script>
+<script th:src="@{/admin/dist/js/shoping_mall_goods.js}"></script>
+</body>
+</html>
+
